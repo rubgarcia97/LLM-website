@@ -8,7 +8,7 @@ app = dash.Dash(__name__)
 app.layout = html.Div([
     dcc.Input(id='input-1', type='text', value=''),
     dcc.Input(id='input-2', type='text', value=''),
-    html.Button('Guardar', id='button'),
+    html.Button('Generar Receta', id='button'),
     html.Div(id='output-container')  # Nuevo div para mostrar el contenido de chat
 ])
 
@@ -33,4 +33,4 @@ def update_output(n_clicks, input1, input2):
         return html.Div(chat_content)
 
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    app.run_server(debug=True, port=5000)
