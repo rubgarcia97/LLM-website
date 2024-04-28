@@ -5,11 +5,21 @@ from llm_chat import Chat
 app = dash.Dash(__name__)
 
 # Diseño de la aplicación
-app.layout = html.Div([
-    dcc.Input(id='input-1', type='text', value=''),
-    dcc.Input(id='input-2', type='text', value=''),
-    html.Button('Generar Receta', id='button'),
-    html.Div(id='output-container')  # Nuevo div para mostrar el contenido de chat
+app.layout = html.Div(style={
+                'background-image':'url("/assets/ditto.png")',
+                'height':'65%', 'width':'100%',
+                'position':'absolute'
+            },
+    children=[
+        html.H1(children="Cherry app"),
+        html.Img(src=app.get_asset_url('ditto.png'), style={'width': '150px', 'height': '150px'}),
+        html.P("Que te apetece comer hoy?"),
+        html.Div([
+            dcc.Input(id='input-1', type='text', value=''),
+            dcc.Input(id='input-2', type='text', value=''),
+            html.Button('Generar Receta', id='button')
+    ]),
+        html.Div(id='output-container')  # Nuevo div para mostrar el contenido de chat
 ])
 
 # Callback para manejar el evento de clic del botón y almacenar los valores de las cajas de texto
