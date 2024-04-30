@@ -6,18 +6,26 @@ app = dash.Dash(__name__)
 
 # Diseño de la aplicación
 app.layout = html.Div(style={
-                'background-image':'url("/assets/ditto.png")',
-                'height':'65%', 'width':'100%',
+                'background-image':'url("/assets/main.png")',
+                'height':'852px', 'width':'393px',
+                #'height':'65%', 'width':'100%',
                 'position':'absolute'
             },
     children=[
-        html.H1(children="Cherry app"),
-        html.Img(src=app.get_asset_url('ditto.png'), style={'width': '150px', 'height': '150px'}),
-        html.P("Que te apetece comer hoy?"),
         html.Div([
-            dcc.Input(id='input-1', type='text', value=''),
-            dcc.Input(id='input-2', type='text', value=''),
-            html.Button('Generar Receta', id='button')
+            html.Div([
+                dcc.Input(id='input-1',placeholder="Tipo 1", type='text', value='', style={'width':'260px','position': 'absolute', 'left': '10%', 'top': '50%'})
+            ]),
+            html.Div([
+                dcc.Input(id='input-2', type='text', value='', style={'width':'260px','position': 'absolute', 'left': '10%', 'top': '56%'})
+            ]),
+            html.Div([
+                dcc.Input(id='input-3', type='text', value='', style={'width':'260px','position': 'absolute', 'left': '10%', 'top': '62%'})
+            ]),
+            html.Div([
+                dcc.Input(id='input-4', type='text', value='', style={'width':'260px','position': 'absolute', 'left': '10%', 'top': '68%'})
+            ]),
+            html.Button('Generar Receta', id='button', style={'position': 'absolute', 'left': '37%', 'top': '91.2%','background-color': 'white','border':'None','box-shadow':'None','font-size':'16px'})
     ]),
         html.Div(id='output-container')  # Nuevo div para mostrar el contenido de chat
 ])
@@ -37,10 +45,10 @@ def update_output(n_clicks, input1, input2):
         variable_2 = input2
 
         # Obtener el contenido de chat
-        chat_content = Chat().request(input_1=variable_1, input_2=variable_2)
+        #chat_content = Chat().request(input_1=variable_1, input_2=variable_2)
         
         # Devolver el contenido de chat dentro de un componente html.Div
-        return html.Div(chat_content)
+        return 0#html.Div(chat_content)
 
 if __name__ == '__main__':
     app.run_server(debug=True, port=5000)
