@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "18147ce653c9496712e49302b02dee0d37642e5aa5aefd41596e8b7a4f577992"
+            "sha256": "a58d4f40773ffeedc215087061a3efd81d90a256835d423e74c56d56d554d014"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -34,11 +34,11 @@
         },
         "blinker": {
             "hashes": [
-                "sha256:c3f865d4d54db7abc53758a01601cf343fe55b84c1de4e3fa910e420b438d5b9",
-                "sha256:e6820ff6fa4e4d1d8e2747c2283749c3f547e4fee112b98555cdcdae32996182"
+                "sha256:5f1cdeff423b77c31b89de0565cd03e5275a03028f44b2b15f912632a58cced6",
+                "sha256:da44ec748222dcd0105ef975eed946da197d5bdf8bafb6aa92f5bc89da63fa25"
             ],
             "markers": "python_version >= '3.8'",
-            "version": "==1.7.0"
+            "version": "==1.8.1"
         },
         "certifi": {
             "hashes": [
@@ -160,6 +160,15 @@
             "index": "pypi",
             "markers": "python_version >= '3.8'",
             "version": "==2.16.1"
+        },
+        "dash-bootstrap-components": {
+            "hashes": [
+                "sha256:960a1ec9397574792f49a8241024fa3cecde0f5930c971a3fc81f016cbeb1095",
+                "sha256:97f0f47b38363f18863e1b247462229266ce12e1e171cfb34d3c9898e6e5cd1e"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.8' and python_version < '4'",
+            "version": "==1.6.0"
         },
         "dash-core-components": {
             "hashes": [
@@ -338,12 +347,12 @@
         },
         "openai": {
             "hashes": [
-                "sha256:612de2d54cf580920a1156273f84aada6b3dca26d048f62eb5364a4314d7f449",
-                "sha256:f406c76ba279d16b9aca5a89cee0d968488e39f671f4dc6f0d690ac3c6f6fca1"
+                "sha256:0b790ce01e6a51daac866d85f76a59ca7a17b2c4c35991542e24a0b40356fb63",
+                "sha256:52fe59418bec5f6ec80dd8c523a5cce82ce6237b1712f1399eeaa8503f925ed7"
             ],
             "index": "pypi",
             "markers": "python_full_version >= '3.7.1'",
-            "version": "==1.23.6"
+            "version": "==1.24.1"
         },
         "packaging": {
             "hashes": [
