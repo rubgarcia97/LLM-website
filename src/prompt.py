@@ -26,4 +26,3 @@ class Prompt:
 
         return concat0+concat1+concat2+concat3+concat4
 
-print(Prompt().prompt(imput1="Desayuno",imput2="chocolate",imput3="300",imput4="proteinas"))
