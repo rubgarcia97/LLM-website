@@ -7,6 +7,8 @@ from prompt import Prompt
 external_css = ["/assets/style.css"]
 app = dash.Dash(__name__,external_stylesheets=external_css)
 
+server = app.server
+
 # Diseño de la aplicación
 app.layout = html.Div(style={
                 'background-image':'url("/assets/main.png")',
@@ -33,7 +35,9 @@ app.layout = html.Div(style={
                 dbc.Modal(
                     [
                         dbc.ModalHeader(dbc.ModalTitle("Generar Receta")),
-                        dbc.ModalBody("Holi"),
+                        dbc.ModalBody([
+                            html.Div(id='text-modal',children='vamoh a jugar')
+                        ]),
                         dbc.ModalFooter(
                             dbc.Button(
                                 "Cerrar",
@@ -56,37 +60,28 @@ app.layout = html.Div(style={
 # Callback para manejar el evento de clic del botón y almacenar los valores de las cajas de texto
 @app.callback(
     Output('modal-body-scroll', 'is_open'),
+    Output('text-modal', 'children'),
     [
         Input('open-body-scroll', 'n_clicks'),
-        Input("close-body-scroll","n_clicks"),
+        Input('close-body-scroll', 'n_clicks'),
     ],
-    [State('input-1', 'value'),
-     State('input-2', 'value'),
-     State('input-3', 'value'),
-     State('input-4', 'value'),
-     State('modal-body-scroll','is_open')]
+    [
+        State('input-1', 'value'),
+        State('input-2', 'value'),
+        State('input-3', 'value'),
+        State('input-4', 'value'),
+        State('modal-body-scroll', 'is_open'),
+        State('text-modal', 'children')
+    ]
 )
-def update_output(n_clicks_open, n_clicks_close, input1, input2, input3, input4,is_open):
+def update_output(n_clicks_open, n_clicks_close, input1, input2, input3, input4, is_open, children):
     if n_clicks_open or n_clicks_close:
-        return not is_open
-    return is_open
-    """
-    if n_clicks is not None:
-        # Aquí puedes hacer lo que quieras con los valores de las cajas de texto
-        # Por ejemplo, puedes almacenarlos en variables
-        variable_1 = input1
-        variable_2 = input2
-        variable_3 = imput3
-        variable_4 = imput4
+        # Procesa los valores de entrada
+        children = Chat().request(input_1=input1, input_2=input2, input_3=input3, input_4=input4)
+        return not is_open, children  # Devuelve ambos valores
+    return is_open, children  # Devuelve los valores actuales si no se hace clic
 
-
-        # Obtener el contenido de chat
-        #chat_content = Chat().request(input_1=variable_1, input_2=variable_2)
-        prompt = Prompt().prompt(imput1=variable_1,imput2=variable_2,imput3=variable_3,imput4=variable_4)
-        # Devolver el contenido de chat dentro de un componente html.Div
-        return html.Div(prompt)#html.Div(chat_content)
-    """
     
 
 if __name__ == '__main__':
-    app.run_server(debug=True, port=5000)
+    app.run(debug=True)
